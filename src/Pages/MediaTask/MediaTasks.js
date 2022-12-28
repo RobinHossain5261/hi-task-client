@@ -16,7 +16,7 @@ const MediaTasks = () => {
             <div className='mt-2 row gx-5 gy-5'>
                 {
                     tasks.map(task =>
-                        <Card className='col-lg-4'>
+                        <Card className='col-lg-4' key={task._id}>
                             <Card.Img style={{ height: '18rem', width: 'fluid' }} variant="top" src={task.image} />
                             <Card.Body>
                                 <Card.Title>{task.title}</Card.Title>

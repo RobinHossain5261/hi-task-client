@@ -4,6 +4,7 @@ import AddTask from "../../Pages/AddTask/AddTask";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import MediaTasks from "../../Pages/MediaTask/MediaTasks";
+import MyTask from "../../Pages/MyTask/MyTask";
 import Register from "../../Pages/Register/Register";
 
 export const router = createBrowserRouter([
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
             {
                 path: '/mediatask',
                 element: <MediaTasks></MediaTasks>
+            },
+            {
+                path: '/mytask',
+                element: <MyTask></MyTask>
             }
         ]
     }

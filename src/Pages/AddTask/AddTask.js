@@ -2,12 +2,14 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 const AddTask = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const imageHostKey = process.env.REACT_APP_imgbb_key;
 
+    const navigate = useNavigate();
 
     const handaleAddTask = data => {
         const image = data.image[0];
@@ -40,7 +42,7 @@ const AddTask = () => {
                         .then(result => {
                             console.log(result);
                             alert(`Task added successfully.`);
-
+                            navigate('/mediatask');
                         })
 
 

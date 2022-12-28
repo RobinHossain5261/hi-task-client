@@ -22,7 +22,7 @@ const Header = () => {
                         <Nav className="me-auto ">
 
                             <Link to='/addtask' className='text-light text-decoration-none me-3'>Add-Task</Link>
-                            <Link className='text-light text-decoration-none me-3'>My-Task</Link>
+                            <Link to='/mytask' className='text-light text-decoration-none me-3'>My-Task</Link>
                             <Link className='text-light text-decoration-none me-3'>Completed-Tasks</Link>
                             <Link to='/mediatask' className='text-light text-decoration-none me-3'>Media-Tasks</Link>
 
