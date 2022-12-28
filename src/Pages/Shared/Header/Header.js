@@ -14,25 +14,26 @@ const Header = () => {
     }
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
                 <Container>
-                    <Navbar.Brand href="#home">Hi-task</Navbar.Brand>
+                    <Link to='/' className='text-light text-decoration-none me-3 fw-bold'><h3>H<span className='text-danger'>i-task</span></h3></Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto ">
 
-                            <Nav.Link className='text-light'>Add Task</Nav.Link>
-                            <Nav.Link className='text-light' >My Task</Nav.Link>
-                            <Nav.Link className='text-light'>Completed Tasks</Nav.Link>
+                            <Link to='/addtask' className='text-light text-decoration-none me-3'>Add-Task</Link>
+                            <Link className='text-light text-decoration-none me-3'>My-Task</Link>
+                            <Link className='text-light text-decoration-none me-3'>Completed-Tasks</Link>
+                            <Link to='/mediatask' className='text-light text-decoration-none me-3'>Media-Tasks</Link>
 
                         </Nav>
                         <Nav >
                             {
-                                user?.uid ? <Link onClick={handaleLogOut} className='text-light mx-2 fw-bold'>Log Out</Link>
+                                user?.uid ? <Link onClick={handaleLogOut} className='text-light text-decoration-none fw-bold'>LogOut</Link>
                                     :
                                     <>
-                                        <Link className='text-light mx-2 fw-bold' to='/login'>Login</Link>
-                                        <Link className='text-light mx-2 fw-bold' to='/register'>Register</Link>
+                                        <Link className='text-light text-decoration-none me-3 fw-bold' to='/login'>Login</Link>
+                                        <Link className='text-light text-decoration-none me-3 fw-bold' to='/register'>Register</Link>
                                     </>
                             }
                         </Nav>
