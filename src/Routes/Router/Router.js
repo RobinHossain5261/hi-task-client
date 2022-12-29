@@ -5,6 +5,7 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import MediaTasks from "../../Pages/MediaTask/MediaTasks";
 import MyTask from "../../Pages/MyTask/MyTask";
+import TaskUpdate from "../../Pages/MyTask/TaskUpdate";
 import Register from "../../Pages/Register/Register";
 
 export const router = createBrowserRouter([
@@ -35,6 +36,11 @@ export const router = createBrowserRouter([
             {
                 path: '/mytask',
                 element: <MyTask></MyTask>
+            },
+            {
+                path: '/mytask/:id',
+                element: <TaskUpdate></TaskUpdate>,
+                loader: ({ params }) => fetch(`http://localhost:5000/myTasks/${params.id}`)
             }
         ]
     }

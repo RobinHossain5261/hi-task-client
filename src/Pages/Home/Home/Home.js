@@ -33,7 +33,6 @@ const Home = () => {
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
                 alert(`Task added successfully.`);
                 form.reset();
 
