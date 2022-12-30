@@ -16,7 +16,7 @@ const TaskUpdate = () => {
         const describtion = { task };
         // console.log(describtion);
 
-        fetch(`http://localhost:5000/myTasks/${storedTask._id}`, {
+        fetch(`https://hi-task-server.vercel.app/myTasks/${storedTask._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

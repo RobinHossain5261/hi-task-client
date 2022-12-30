@@ -3,18 +3,22 @@ import Table from 'react-bootstrap/Table';
 import { AuthContext } from '../../contexts/AuthProvider';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
+import Spinner from 'react-bootstrap/Spinner';
+
 
 const MyTask = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
 
     const [tasks, setTasks] = useState([]);
+
+
 
     // const { data: tasks = [], refetch } = useQuery({
     //     queryKey: ['tasks'],
     //     queryFn: async () => {
     //         try {
-    //             const res = await fetch(`http://localhost:5000/myTasks?email=${user?.email}`)
+    //             const res = await fetch(`https://hi-task-server.vercel.app/myTasks?email=${user?.email}`)
     //             const data = await res.json();
     //             return data;
     //         }
@@ -25,10 +29,14 @@ const MyTask = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myTasks?email=${user?.email}`)
+        fetch(`https://hi-task-server.vercel.app/myTasks?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setTasks(data))
     }, [user?.email])
+
+    if (loading) {
+        return <Spinner animation="border" variant="primary" />
+    }
 
     const handaleDelete = task => {
 
@@ -36,7 +44,7 @@ const MyTask = () => {
 
         if (agree) {
             // console.log('Deleting id', task._id)
-            fetch(`http://localhost:5000/myTasks/${task._id}`, {
+            fetch(`https://hi-task-server.vercel.app/myTasks/${task._id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -82,7 +90,9 @@ const MyTask = () => {
                                     <Button onClick={() => handaleDelete(task)} variant="danger">Delete</Button>{' '}
                                 </td>
                                 <td>
+
                                     <Button variant="success">Completed</Button>{' '}
+
                                 </td>
                             </tr>)
                     }

@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { AuthContext } from '../../contexts/AuthProvider';
 
@@ -8,7 +7,7 @@ const MediaTasks = () => {
 
     const [tasks, setTasks] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/mediaTasks?email=${user?.email}`)
+        fetch(`https://hi-task-server.vercel.app/mediaTasks?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setTasks(data))
     }, [user?.email]);
@@ -26,7 +25,7 @@ const MediaTasks = () => {
                                 <Card.Text>
                                     {task.describtion}
                                 </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
+
                             </Card.Body>
                         </Card>
                     )

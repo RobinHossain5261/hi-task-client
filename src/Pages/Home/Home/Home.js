@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { DayPicker } from 'react-day-picker';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import '../../../sass/_index.scss';
 
 
 const Home = () => {
@@ -24,7 +25,7 @@ const Home = () => {
 
         const describtion = { task, email };
 
-        fetch('http://localhost:5000/myTasks', {
+        fetch('https://hi-task-server.vercel.app/myTasks', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

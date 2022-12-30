@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import './Login.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { AuthContext } from '../../contexts/AuthProvider';

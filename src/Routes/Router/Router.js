@@ -7,6 +7,7 @@ import MediaTasks from "../../Pages/MediaTask/MediaTasks";
 import MyTask from "../../Pages/MyTask/MyTask";
 import TaskUpdate from "../../Pages/MyTask/TaskUpdate";
 import Register from "../../Pages/Register/Register";
+import PrivetRoute from "../PrivetRoute/PrivetRoute";
 
 export const router = createBrowserRouter([
     {
@@ -27,20 +28,20 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/addtask',
-                element: <AddTask></AddTask>
+                element: <PrivetRoute><AddTask></AddTask></PrivetRoute>
             },
             {
                 path: '/mediatask',
-                element: <MediaTasks></MediaTasks>
+                element: <PrivetRoute><MediaTasks></MediaTasks></PrivetRoute>
             },
             {
                 path: '/mytask',
-                element: <MyTask></MyTask>
+                element: <PrivetRoute><MyTask></MyTask></PrivetRoute>
             },
             {
                 path: '/mytask/:id',
                 element: <TaskUpdate></TaskUpdate>,
-                loader: ({ params }) => fetch(`http://localhost:5000/myTasks/${params.id}`)
+                loader: ({ params }) => fetch(`https://hi-task-server.vercel.app/myTasks/${params.id}`)
             }
         ]
     }

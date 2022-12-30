@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
+import '../../sass/_index.scss';
+import './addTask.scss';
 
 const AddTask = () => {
+
+    const { user } = useContext(AuthContext);
 
     const { register, formState: { errors }, handleSubmit } = useForm();
     const imageHostKey = process.env.REACT_APP_imgbb_key;
@@ -27,11 +32,12 @@ const AddTask = () => {
                     const mediaTask = {
                         title: data.title,
                         describtion: data.describtion,
-                        image: imgData.data.url
+                        image: imgData.data.url,
+                        email: user?.email
                     }
 
                     //save database
-                    fetch('http://localhost:5000/mediaTasks', {
+                    fetch('https://hi-task-server.vercel.app/mediaTasks', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',
@@ -57,7 +63,7 @@ const AddTask = () => {
             <h1>Add task</h1>
 
             <Form onSubmit={handleSubmit(handaleAddTask)}
-                className="w-50 border p-3 rounded mt-5"
+                className="w-50 border p-3 rounded mt-5" id="body"
             >
                 <Form.Group className="mb-1" controlId="exampleForm.ControlInput1">
                     <Form.Label>Title</Form.Label>
@@ -78,7 +84,7 @@ const AddTask = () => {
                     />
                     {errors.describtion && <p className='text-danger fw-bold'>{errors.describtion?.message}</p>}
                 </Form.Group>
-                <Button variant="success" type="submit">
+                <Button variant="dark" type="submit">
                     Add Task
                 </Button>
             </Form>
